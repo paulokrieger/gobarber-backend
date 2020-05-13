@@ -3,7 +3,7 @@ import { verify } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 
-interface TokenPayload {
+interface ITokenPayload {
   iat: number;
   exp: number;
   sub: string;
@@ -28,7 +28,7 @@ export default function ensureAuthenticated(
   try {
     const decoded = verify(token, authConfig.jwt.secret);
     //se deu tudo certo, sera recebido o payload com iat, exp e sub
-    const { sub } = decoded as TokenPayload; //forçando o tipo da variável
+    const { sub } = decoded as ITokenPayload; //forçando o tipo da variável
 
     //como dentro do request do express não existe a informação do tipo user
     //é necessario criar uma extensão do request, que foi realizado dentro de

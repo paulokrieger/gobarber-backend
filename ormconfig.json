@@ -1,7 +1,7 @@
 {
   "type": "postgres",
   "host": "localhost",
-  "port": 5432,
+  "port": "5432",
   "username": "postgres",
   "password": "docker",
   "database": "gostack_gobarber",
@@ -12,6 +12,6 @@
     "./src/shared/infra/typeorm/migrations/*.ts"
   ],
   "cli": {
-    "migrationsDir": "./src/shared/infra/typeorm/migrations/*.ts"
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
   }
 }
