@@ -1,7 +1,9 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+import { errors } from 'celebrate';
 import 'express-async-errors';
 
 import uploadConfig from '@config/upload';
@@ -19,6 +21,8 @@ app.use('/files', express.static(uploadConfig.uploadsFolder)); //rota direta par
 //http://localhost:3333/files/NOMEIMAGEM -> já puxa a imagem
 app.use(routes);
 //Trativa de errors
+app.use(errors());
+
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof AppError) { //se conhece o erro, se for originzado atraves do app, retornar o erro de maneira legal pro front
