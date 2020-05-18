@@ -9,8 +9,6 @@ export default class AppointmentsController {
     const user_id = request.user.id;  // pega o usuário logado
     const { provider_id, date } = request.body;
 
-    const parsedDate = parseISO(date);
-
     const createAppointment = container.resolve(CreateAppointmentService);
     /*
     Vai carregar o service, vai ver no constructor dele se ta precisando de qlqer depdencia
@@ -19,7 +17,7 @@ export default class AppointmentsController {
     */
 
     const appointment = await createAppointment.execute({
-      date: parsedDate, provider_id, user_id
+      date, provider_id, user_id
     });
 
     return response.json(appointment);

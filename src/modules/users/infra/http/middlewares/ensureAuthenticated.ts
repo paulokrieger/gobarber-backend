@@ -37,7 +37,6 @@ export default function ensureAuthenticated(
     //e assim pode usar essa ID , na hora que for listar/agendar o serviço, já sabe quem está
     request.user = {
       id: sub,
-
     }
 
     return next();
