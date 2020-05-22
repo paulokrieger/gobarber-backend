@@ -33,7 +33,8 @@ class Appointment {
 
   @Column()
   user_id: string;
-
+// eager automaticamente quando vc quiser os dados de um appointment, vai retornar os dados do user tb
+// lazy
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
