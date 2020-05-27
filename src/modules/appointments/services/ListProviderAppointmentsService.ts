@@ -35,9 +35,9 @@ class ListProviderAppointmentsService {
       appointments = await this.appointmentsRepository.findAllInDayFromProvider(
         {
           provider_id,
-          year,
+          day,
           month,
-          day
+          year
         },
       );
     }

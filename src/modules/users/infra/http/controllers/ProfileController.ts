@@ -27,7 +27,7 @@ export default class ProfileController {
 
     const updateProfile = container.resolve(UpdateProfileService);
 
-    const user = updateProfile.execute({
+    const user = await updateProfile.execute({
       user_id,
       name,
       email,

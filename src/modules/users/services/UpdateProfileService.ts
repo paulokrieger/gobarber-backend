@@ -59,7 +59,7 @@ class UpdateProfileService {
       throw new AppError('E-mail already in use.');
     }
 
-    return this.usersRepository.save(user);
+    return await this.usersRepository.save(user);
   }
 }
 export default UpdateProfileService;

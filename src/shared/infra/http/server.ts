@@ -16,10 +16,10 @@ import '@shared/container';
 
 const app = express();
 
-app.use(rateLimiter);
 app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.uploadsFolder)); //rota direta para mostrar todos os arquivos salvos
+app.use(rateLimiter); // importante botar aqui , se um usuário fizer muitos agendamentos em um dia, nao carrega o avatar se aqui estiver acima
 //http://localhost:3333/files/NOMEIMAGEM -> já puxa a imagem
 app.use(routes);
 //Trativa de errors
