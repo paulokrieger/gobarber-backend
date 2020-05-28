@@ -22,7 +22,7 @@ export default class ProviderAppointmentsController {
       day: Number(day),
       month: Number(month),
       year: Number(year),
-    });
+    }, );
 
     return response.json(classToClass(appointments));
 

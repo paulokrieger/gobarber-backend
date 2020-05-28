@@ -16,8 +16,9 @@ class AppointmentsRepository implements IAppointmentsRepository {
   //retorno de uma função assíncrona sempre será uma Promise,
   public async findByDate(date: Date, provider_id: string): Promise<Appointment | undefined> {  //retorna o appointment caso encontre OU retorno nulo
     const findAppointment = await this.ormRepository.findOne({
-      where: { date , provider_id },
-    });
+      where: { date, provider_id },
+    },
+    );
     //findByDate(date).then(response => )
     return findAppointment;
   }
@@ -47,10 +48,14 @@ class AppointmentsRepository implements IAppointmentsRepository {
         date: Raw(dateFieldName =>
           `to_char(${dateFieldName}, 'DD-MM-YYYY') = '${parsedDay}-${parsedMonth}-${year}'`,
         ),
+
+      },
+      order: {
+        date: 'ASC',
       },
       // funciona como o eager na db, eager loading
       // vai automaticamente uma query para trazer os usuarios
-      relations:['user'],
+      relations: ['user'],
     })
 
     return appointments;
